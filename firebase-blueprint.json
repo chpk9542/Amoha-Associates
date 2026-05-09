@@ -1,0 +1,53 @@
+{
+  "entities": {
+    "Lead": {
+      "title": "Loan Lead",
+      "description": "A lead generated from various loan inquiry forms.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "city": { "type": "string" },
+        "loanType": { "type": "string" },
+        "income": { "type": "number" },
+        "employmentType": { "type": "string", "enum": ["Salaried", "Self-employed", "Business"] },
+        "propertyValue": { "type": "number" },
+        "existingObligations": { "type": "number" },
+        "status": { "type": "string", "enum": ["New", "Contacted", "Qualified", "Converted", "Lost"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "phone", "loanType", "city", "createdAt"]
+    },
+    "BlogPost": {
+      "title": "Blog Post",
+      "description": "Article content for the knowledge center.",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "slug": { "type": "string" },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "author": { "type": "string" },
+        "category": { "type": "string" },
+        "featuredImage": { "type": "string" },
+        "status": { "type": "string", "enum": ["Draft", "Published"] },
+        "publishedAt": { "type": "string", "format": "date-time" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "slug", "content", "category"]
+    }
+  },
+  "firestore": {
+    "/leads/{leadId}": {
+      "schema": "Lead",
+      "description": "Collection of incoming loan leads."
+    },
+    "/blog/{postId}": {
+      "schema": "BlogPost",
+      "description": "Collection of blog articles."
+    }
+  }
+}

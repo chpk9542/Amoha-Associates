@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Montserrat", sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  
+  --color-primary: #0A192F; /* Deep Navy */
+  --color-secondary: #C5A059; /* Gold */
+  --color-accent: #172A45; /* Lighter Navy */
+  --color-matte-black: #111111;
+  --color-luxury-white: #F5F2ED;
+}
+
+@layer base {
+  body {
+    @apply bg-matte-black text-luxury-white font-sans antialiased;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl;
+  }
+  
+  .gold-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[#C5A059] via-[#E4D09A] to-[#C5A059];
+  }
+
+  .premium-button {
+    @apply relative px-8 py-3 rounded-full font-display font-medium transition-all duration-300 overflow-hidden;
+  }
+
+  .premium-button-gold {
+    @apply bg-secondary text-primary hover:bg-white hover:text-primary shadow-[0_0_15px_rgba(197,160,89,0.3)];
+  }
+
+  .premium-button-outline {
+    @apply border border-secondary text-secondary hover:bg-secondary hover:text-primary;
+  }
+}
